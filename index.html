@@ -14,7 +14,7 @@
 .hero{text-align:center;padding:90px 0 65px}.eyebrow,.tag{color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-weight:700;font-size:.76rem}.hero h1{font:700 clamp(2.3rem,5vw,4rem)/1.12 Georgia,serif;color:var(--navy);max-width:850px;margin:18px auto}.hero p{max-width:650px;margin:0 auto 30px;color:var(--dim);font-size:1.08rem}.btn{display:inline-block;background:var(--navy);color:#fff;padding:13px 24px;border-radius:3px;font-weight:700}.trust{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);margin-top:65px}.trust div{padding:22px;text-align:center;border-right:1px solid var(--line);font-size:.85rem;color:var(--dim)}.trust div:last-child{border:0}.trust b{display:block;color:var(--navy);font-family:Georgia,serif;font-size:1rem}
 section{padding:78px 0}.head{text-align:center;max-width:650px;margin:0 auto 45px}.head h2{font:700 2rem Georgia,serif;color:var(--navy);margin:8px 0}.head p{color:var(--dim)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);padding:28px;border-top:3px solid var(--gold)}.card h3{margin:0 0 8px;color:var(--navy);font:700 1.12rem Georgia,serif}.card p{margin:0;color:var(--dim);font-size:.92rem}.process{background:#fff;border-block:1px solid var(--line)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.step{text-align:center}.num{margin:auto auto 14px;width:38px;height:38px;border-radius:50%;background:var(--navy);color:white;display:grid;place-items:center;font-family:Georgia,serif}.step h3{font-size:.96rem;color:var(--navy)}.step p{font-size:.84rem;color:var(--dim)}
 .about{background:#fff;border:1px solid var(--line);padding:42px;display:grid;grid-template-columns:1.4fr 1fr;gap:45px}.about h2{font:700 1.8rem Georgia,serif;color:var(--navy)}.about p{color:var(--dim)}.facts div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:.87rem}.facts span:last-child{color:var(--navy);font-weight:700;text-align:right}
-.contact{background:var(--navy);color:#eee8da;text-align:center}.contact h2{font:700 2rem Georgia,serif}.contact p{color:#b8c2cf}.contact a{color:#fff;border-bottom:1px solid var(--gold);margin:0 10px}.contact form{max-width:550px;margin:35px auto 0;text-align:left}.contact input,.contact textarea{width:100%;margin:6px 0 14px;padding:12px;border:1px solid #52647a;background:#24364e;color:#fff}.contact button{width:100%;padding:13px;background:var(--gold);border:0;color:var(--navy);font-weight:800}.foot{text-align:center;padding:24px;color:var(--dim);font-size:.8rem;background:#fff}
+.contact{background:var(--navy);color:#eee8da;text-align:center}.contact h2{font:700 2rem Georgia,serif}.contact p{color:#b8c2cf}.contact a{color:#fff;border-bottom:1px solid var(--gold);margin:0 10px}.contact form{max-width:550px;margin:35px auto 0;text-align:left}.contact input,.contact textarea{width:100%;margin:6px 0 14px;padding:12px;border:1px solid #52647a;background:#24364e;color:#fff}.contact button{width:100%;padding:13px;background:var(--gold);border:0;color:var(--navy);font-weight:800}.captcha-box{margin:8px 0 18px;padding:14px;border:1px solid #52647a;background:#24364e}.captcha-box label{display:block;margin-bottom:7px;font-weight:700}.captcha-row{display:flex;gap:10px;align-items:center}.captcha-row input{margin:0;max-width:150px}.captcha-help{font-size:.78rem;color:#b8c2cf;margin-top:6px}.foot{text-align:center;padding:24px;color:var(--dim);font-size:.8rem;background:#fff}
 @media(max-width:760px){.links{display:none}.trust,.steps,.grid,.about{grid-template-columns:1fr}.trust div{border-right:0;border-bottom:1px solid var(--line)}.about{padding:26px}}
 
 </style>
@@ -48,9 +48,48 @@ section{padding:78px 0}.head{text-align:center;max-width:650px;margin:0 auto 45p
   <input id="c-email" type="email" name="email" required>
   <label for="c-mensaje">¿En qué puedo ayudarte?</label>
   <textarea id="c-mensaje" name="mensaje" rows="5" required></textarea>
-  <button>Enviar consulta</button>
+
+  <div class="captcha-box">
+    <label for="c-captcha">Verificación anti-spam</label>
+    <div class="captcha-row">
+      <span id="captcha-question" aria-live="polite"></span>
+      <input id="c-captcha" name="captcha" inputmode="numeric" autocomplete="off"
+             required aria-label="Resultado de la verificación">
+    </div>
+    <div class="captcha-help">Resolvé la cuenta para enviar la consulta.</div>
+  </div>
+
+  <button type="submit">Enviar consulta</button>
 </form></div></section>
 <footer class="foot">© 2026 Eduardo Zavala · Consultoría independiente en ciberseguridad · 100% remoto</footer>
+
+
+<script>
+(() => {
+  const form = document.querySelector('.contact form');
+  const question = document.getElementById('captcha-question');
+  const answer = document.getElementById('c-captcha');
+
+  const a = Math.floor(Math.random() * 8) + 2;
+  const b = Math.floor(Math.random() * 8) + 2;
+  const expected = a + b;
+
+  question.textContent = `¿Cuánto es ${a} + ${b}?`;
+
+  form.addEventListener('submit', (event) => {
+    if (Number(answer.value.trim()) !== expected) {
+      event.preventDefault();
+      answer.setCustomValidity('La verificación anti-spam no es correcta.');
+      answer.reportValidity();
+      answer.focus();
+    } else {
+      answer.setCustomValidity('');
+    }
+  });
+
+  answer.addEventListener('input', () => answer.setCustomValidity(''));
+})();
+</script>
 
 </body>
 </html>
