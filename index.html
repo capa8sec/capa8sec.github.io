@@ -6,90 +6,267 @@
 <title>CAPA8SEC - Consultoría en Ciberseguridad</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
 <meta name="description" content="Consultoría independiente en ciberseguridad e infraestructura crítica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+:root{--bg:#0a0e0a;--panel:#0f1510;--panel2:#0c1210;--green:#4ade80;--greendim:#2f5c3f;
+  --line:#1c2a1f;--text:#c9d1c9;--dim:#6f7f70;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"JetBrains Mono",monospace;line-height:1.7;font-size:.95rem}
+a{color:var(--green);text-decoration:none}
+.wrap{max-width:1060px;margin:auto;padding:0 28px}
+.pfx{color:var(--green)}
 
-:root{--bg:#f4f1ea;--panel:#fff;--navy:#1b2a41;--gold:#b7912e;--line:#dcd6c6;--text:#2b2a26;--dim:#6b6659}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}.wrap{max-width:1050px;margin:auto;padding:0 28px}
-.top{background:var(--navy);color:#eee8da;text-align:center;padding:9px;font-size:.82rem}.nav{background:#fff;border-bottom:1px solid var(--line)}.navin{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{font-family:Georgia,serif;color:var(--navy);font-size:1.2rem;font-weight:700}.brand small{display:block;font:600 .68rem system-ui;letter-spacing:.08em;color:var(--dim);text-transform:uppercase}.links{display:flex;gap:26px;font-size:.88rem;color:var(--dim)}
-.hero{text-align:center;padding:90px 0 65px}.eyebrow,.tag{color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-weight:700;font-size:.76rem}.hero h1{font:700 clamp(2.3rem,5vw,4rem)/1.12 Georgia,serif;color:var(--navy);max-width:850px;margin:18px auto}.hero p{max-width:650px;margin:0 auto 30px;color:var(--dim);font-size:1.08rem}.btn{display:inline-block;background:var(--navy);color:#fff;padding:13px 24px;border-radius:3px;font-weight:700}.trust{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);margin-top:65px}.trust div{padding:22px;text-align:center;border-right:1px solid var(--line);font-size:.85rem;color:var(--dim)}.trust div:last-child{border:0}.trust b{display:block;color:var(--navy);font-family:Georgia,serif;font-size:1rem}
-section{padding:78px 0}.head{text-align:center;max-width:650px;margin:0 auto 45px}.head h2{font:700 2rem Georgia,serif;color:var(--navy);margin:8px 0}.head p{color:var(--dim)}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);padding:28px;border-top:3px solid var(--gold)}.card h3{margin:0 0 8px;color:var(--navy);font:700 1.12rem Georgia,serif}.card p{margin:0;color:var(--dim);font-size:.92rem}.process{background:#fff;border-block:1px solid var(--line)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.step{text-align:center}.num{margin:auto auto 14px;width:38px;height:38px;border-radius:50%;background:var(--navy);color:white;display:grid;place-items:center;font-family:Georgia,serif}.step h3{font-size:.96rem;color:var(--navy)}.step p{font-size:.84rem;color:var(--dim)}
-.about{background:#fff;border:1px solid var(--line);padding:42px;display:grid;grid-template-columns:1.4fr 1fr;gap:45px}.about h2{font:700 1.8rem Georgia,serif;color:var(--navy)}.about p{color:var(--dim)}.facts div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:.87rem}.facts span:last-child{color:var(--navy);font-weight:700;text-align:right}
-.contact{background:var(--navy);color:#eee8da;text-align:center}.contact h2{font:700 2rem Georgia,serif}.contact p{color:#b8c2cf}.contact a{color:#fff;border-bottom:1px solid var(--gold);margin:0 10px}.contact form{max-width:550px;margin:35px auto 0;text-align:left}.contact input,.contact textarea{width:100%;margin:6px 0 14px;padding:12px;border:1px solid #52647a;background:#24364e;color:#fff}.contact button{width:100%;padding:13px;background:var(--gold);border:0;color:var(--navy);font-weight:800}.captcha-box{margin:8px 0 18px;padding:14px;border:1px solid #52647a;background:#24364e}.captcha-box label{display:block;margin-bottom:7px;font-weight:700}.captcha-row{display:flex;gap:10px;align-items:center}.captcha-row input{margin:0;max-width:150px}.captcha-help{font-size:.78rem;color:#b8c2cf;margin-top:6px}.foot{text-align:center;padding:24px;color:var(--dim);font-size:.8rem;background:#fff}
-@media(max-width:760px){.links{display:none}.trust,.steps,.grid,.about{grid-template-columns:1fr}.trust div{border-right:0;border-bottom:1px solid var(--line)}.about{padding:26px}}
+.top{background:#060907;color:var(--dim);text-align:center;padding:8px;font-size:.76rem;border-bottom:1px solid var(--line)}
+.nav{background:#080c09;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.navin{height:70px;display:flex;align-items:center;justify-content:space-between}
+.brand{color:#fff;font-weight:600}
+.brand small{display:block;font-size:.66rem;color:var(--dim)}
+.links{display:flex;gap:24px;font-size:.82rem;color:var(--dim)}
+.links a:hover{color:var(--green)}
 
+.hero{position:relative;padding:100px 0 70px;overflow:hidden;border-bottom:1px solid var(--line)}
+#rain{position:absolute;inset:0;opacity:.14;z-index:0}
+.hero .in{position:relative;z-index:1;max-width:760px}
+.eyebrow{color:var(--green);font-size:.8rem}
+.hero h1{font:700 clamp(1.7rem,3.8vw,2.7rem)/1.35;color:#fff;margin:16px 0;min-height:2.8em}
+.cursor{display:inline-block;width:.55em;height:1em;background:var(--green);vertical-align:middle;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.hero p{max-width:580px;color:var(--dim);margin:0 0 30px}
+.btn{display:inline-block;background:transparent;color:var(--green);border:1px solid var(--green);padding:12px 22px;border-radius:2px;font-weight:600}
+.btn:hover{background:rgba(74,222,128,.1)}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);margin-top:55px;position:relative;z-index:1}
+.trust div{padding:18px;border-right:1px solid var(--line);font-size:.8rem;color:var(--dim)}
+.trust div:last-child{border-right:0}
+.trust b{display:block;color:#fff;margin-bottom:3px}
+
+section{padding:72px 0}
+.head{max-width:620px;margin:0 0 40px}
+.head .tag{color:var(--green);font-size:.8rem}
+.head h2{color:#fff;font-size:1.5rem;margin:8px 0;font-weight:700}
+.head p{color:var(--dim)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:2px}
+.card h3{margin:0 0 8px;color:#fff;font-size:.98rem}
+.card h3::before{content:"$ ";color:var(--green)}
+.card p{margin:0;color:var(--dim);font-size:.86rem}
+
+.process{background:var(--panel2);border-block:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.step{background:var(--panel);border:1px solid var(--line);padding:20px}
+.step .tagnum{color:var(--green);font-size:.78rem;display:block;margin-bottom:8px}
+.step h3{font-size:.9rem;color:#fff;margin:0 0 6px}
+.step p{font-size:.8rem;color:var(--dim);margin:0}
+
+.badge-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.badge{background:var(--panel);border:1px solid var(--line);padding:20px 16px}
+.badge .ico{font-size:1.3rem;margin-bottom:8px}
+.badge h4{margin:0 0 6px;color:#fff;font-size:.86rem}
+.badge p{margin:0;color:var(--dim);font-size:.76rem}
+
+.about{background:var(--panel);border:1px solid var(--line);padding:40px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px}
+.about h2{color:#fff;font-size:1.4rem}
+.about p{color:var(--dim)}
+.facts div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:.82rem;color:var(--dim)}
+.facts span:last-child{color:var(--green);text-align:right}
+
+.contact{background:#060907;border-top:1px solid var(--line)}
+.contact h2{color:#fff;font-size:1.6rem}
+.contact p{color:var(--dim)}
+.contact a{margin-right:14px}
+.contact form{max-width:560px;margin-top:28px}
+.contact label{font-size:.8rem;color:var(--dim)}
+.contact input,.contact textarea{width:100%;margin:6px 0 16px;padding:11px;border:1px solid var(--line);background:var(--panel);color:#fff;font-family:inherit;font-size:.88rem}
+.contact button{padding:12px 26px;background:var(--green);border:0;color:#08110b;font-weight:700;cursor:pointer;font-family:inherit}
+.captcha-box{margin:8px 0 18px;padding:14px;border:1px solid var(--line);background:var(--panel)}
+.captcha-box label{display:block;margin-bottom:7px;font-weight:600;color:#fff}
+.captcha-row{display:flex;gap:10px;align-items:center}
+.captcha-row input{margin:0;max-width:150px}
+.captcha-help{font-size:.76rem;color:var(--dim);margin-top:6px}
+.foot{text-align:center;padding:22px;color:var(--dim);font-size:.78rem;background:#060907}
+
+@media(max-width:760px){
+  .links{display:none}
+  .trust,.steps,.grid,.about,.badge-grid{grid-template-columns:1fr}
+  .about{padding:24px}
+}
 </style>
 </head>
 <body>
 
 <div class="top">Consultoría independiente · Ciberseguridad, Cloud e Infraestructura</div>
-<div class="nav"><div class="wrap navin"><div class="brand">Eduardo Zavala<small>Ciberseguridad · Cloud · Infraestructura</small></div><div class="links"><a href="#servicios">Servicios</a><a href="#metodo">Cómo trabajo</a><a href="#perfil">Perfil</a><a href="#contacto">Contacto</a></div></div></div>
-<header class="hero"><div class="wrap"><div class="eyebrow"></div><h1>Identificar riesgos. Reducir exposición. Mejorar la seguridad.</h1><p>Más de 15 años trabajando en ciberseguridad e infraestructura. Ayudo a organizaciones a identificar exposición, validar controles y transformar hallazgos técnicos en acciones concretas.</p><a class="btn" href="#contacto">Solicitar una consulta</a><div class="trust"><div><b>Ciberseguridad</b>Evaluación y pentesting</div><div><b>AWS / Cloud</b>Revisión y hardening</div><div><b>Infraestructura</b>Redes y servidores</div><div><b>Seguridad</b>Riesgo y cumplimiento</div></div></div></header>
-<section id="servicios"><div class="wrap"><div class="head"><div class="tag">Servicios</div><h2>Soluciones para problemas concretos</h2><p>Un alcance claro, entregables definidos y comunicación directa.</p></div><div class="grid">
-<div class="card"><h3>Evaluación de ciberseguridad</h3><p>Revisión técnica para identificar riesgos, exposición y oportunidades de mejora.</p></div>
-<div class="card"><h3>Pentesting</h3><p>Evaluaciones autorizadas de aplicaciones, infraestructura y superficie expuesta, con plan de remediación.</p></div>
-<div class="card"><h3>Security Review AWS</h3><p>Revisión de configuraciones, controles de seguridad, exposición y buenas prácticas en AWS.</p></div>
-<div class="card"><h3>Seguridad de infraestructura</h3><p>Redes, servidores, controles de acceso, hardening y acompañamiento técnico.</p></div>
-<div class="card"><h3>Seguridad de la información</h3><p>Políticas, gestión de riesgos, controles y apoyo en cumplimiento normativo.</p></div>
-<div class="card"><h3>Consultoría técnica</h3><p>Una segunda mirada independiente para decisiones de arquitectura, seguridad e infraestructura.</p></div>
-</div></div></section>
-<section id="metodo" class="process"><div class="wrap"><div class="head"><div class="tag">Metodología</div><h2>Un proceso simple y transparente</h2></div><div class="steps">
-<div class="step"><div class="num">1</div><h3>Reunión inicial</h3><p>Entendemos el problema y definimos objetivos.</p></div><div class="step"><div class="num">2</div><h3>Evaluación</h3><p>Analizamos el alcance acordado.</p></div><div class="step"><div class="num">3</div><h3>Informe</h3><p>Hallazgos, riesgos y prioridades de remediación.</p></div><div class="step"><div class="num">4</div><h3>Acompañamiento</h3><p>Ayuda técnica para implementar mejoras.</p></div>
-</div></div></section>
-<section id="perfil"><div class="wrap"><div class="about"><div><div class="tag">Perfil</div><h2>Experiencia técnica, trato directo.</h2><p><strong>Eduardo Zavala</strong> — Profesional de ciberseguridad, redes e infraestructura, con más de 15 años de experiencia técnica.</p><p>Si necesitás saber dónde estás expuesto, validar tus controles de seguridad, investigar un problema o tomar una decisión de arquitectura, puedo evaluar el escenario directamente con vos y ayudarte a definir e implementar una solución.</p></div><div class="facts"><div><span>Experiencia</span><span>15+ años</span></div><div><span>Áreas</span><span>Cyber · Cloud · Infra - Cumplimiento</span></div><div><span>Modalidad</span><span>100% remoto · Consultoría personalizada</span></div><div><span>LinkedIn</span><span><a href="https://www.linkedin.com/in/eduardo-seba-zavala/" target="_blank">Perfil profesional</a></span></div></div></div></div></section>
-<section id="contacto" class="contact"><div class="wrap"><h2>¿Tenés un problema de seguridad?</h2>
-<p>Contame brevemente qué necesitás evaluar o resolver.</p>
-<p><a href="mailto:capa8sec@gmail.com">capa8sec@gmail.com</a> <a href="https://www.linkedin.com/in/eduardo-seba-zavala/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-<form action="https://formsubmit.co/capa8sec@gmail.com" method="POST">
-  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-  <input type="hidden" name="_next" value="https://capa8sec.github.io/#contacto">
-  <label for="c-nombre">Nombre</label>
-  <input id="c-nombre" name="nombre" required>
-  <label for="c-email">Email</label>
-  <input id="c-email" type="email" name="email" required>
-  <label for="c-mensaje">¿En qué puedo ayudarte?</label>
-  <textarea id="c-mensaje" name="mensaje" rows="5" required></textarea>
+<div class="nav"><div class="wrap navin">
+  <div class="brand">Eduardo Zavala<small>Ciberseguridad · Cloud · Infraestructura</small></div>
+  <div class="links"><a href="#servicios">Servicios</a><a href="#metodo">Cómo trabajo</a><a href="#proyectos">Proyectos</a><a href="#perfil">Perfil</a><a href="#contacto">Contacto</a></div>
+</div></div>
 
-  <div class="captcha-box">
-    <label for="c-captcha">Verificación anti-spam</label>
-    <div class="captcha-row">
-      <span id="captcha-question" aria-live="polite"></span>
-      <input id="c-captcha" name="captcha" inputmode="numeric" autocomplete="off"
-             required aria-label="Resultado de la verificación">
+<header class="hero">
+  <canvas id="rain"></canvas>
+  <div class="wrap in">
+    <div class="eyebrow"><span class="pfx">&gt;</span> whoami</div>
+    <h1 id="typed"></h1>
+    <p>Más de 15 años trabajando en ciberseguridad e infraestructura. Ayudo a organizaciones a identificar exposición, validar controles y transformar hallazgos técnicos en acciones concretas.</p>
+    <a class="btn" href="#contacto">Solicitar una consulta</a>
+    <div class="trust">
+      <div><b>Ciberseguridad</b>Evaluación y pentesting</div>
+      <div><b>AWS / Cloud</b>Revisión y hardening</div>
+      <div><b>Infraestructura</b>Redes y servidores</div>
+      <div><b>Seguridad</b>Riesgo y cumplimiento</div>
     </div>
-    <div class="captcha-help">Resolvé la cuenta para enviar la consulta.</div>
   </div>
+</header>
 
-  <button type="submit">Enviar consulta</button>
-</form></div></section>
+<section id="servicios"><div class="wrap">
+  <div class="head"><div class="tag">// servicios</div><h2>Soluciones para problemas concretos</h2><p>Un alcance claro, entregables definidos y comunicación directa.</p></div>
+  <div class="grid">
+    <div class="card"><h3>Evaluación de ciberseguridad</h3><p>Revisión técnica para identificar riesgos, exposición y oportunidades de mejora.</p></div>
+    <div class="card"><h3>Pentesting</h3><p>Evaluaciones autorizadas de aplicaciones, infraestructura y superficie expuesta, con plan de remediación.</p></div>
+    <div class="card"><h3>Security Review AWS</h3><p>Revisión de configuraciones, controles de seguridad, exposición y buenas prácticas en AWS.</p></div>
+    <div class="card"><h3>Seguridad de infraestructura</h3><p>Redes, servidores, controles de acceso, hardening y acompañamiento técnico.</p></div>
+    <div class="card"><h3>Seguridad de la información</h3><p>Políticas, gestión de riesgos, controles y apoyo en cumplimiento normativo.</p></div>
+    <div class="card"><h3>Consultoría técnica</h3><p>Una segunda mirada independiente para decisiones de arquitectura, seguridad e infraestructura.</p></div>
+  </div>
+</div></section>
+
+<section id="metodo" class="process"><div class="wrap">
+  <div class="head"><div class="tag">// metodología</div><h2>Un proceso simple y transparente</h2></div>
+  <div class="steps">
+    <div class="step"><span class="tagnum">[01]</span><h3>Reunión inicial</h3><p>Entendemos el problema y definimos objetivos.</p></div>
+    <div class="step"><span class="tagnum">[02]</span><h3>Evaluación</h3><p>Analizamos el alcance acordado.</p></div>
+    <div class="step"><span class="tagnum">[03]</span><h3>Informe</h3><p>Hallazgos, riesgos y prioridades de remediación.</p></div>
+    <div class="step"><span class="tagnum">[04]</span><h3>Acompañamiento</h3><p>Ayuda técnica para implementar mejoras.</p></div>
+  </div>
+</div></section>
+
+<section id="proyectos"><div class="wrap">
+  <div class="head"><div class="tag">// proyectos</div><h2>Experiencia aplicada</h2><p>Algunos de los trabajos y desafíos técnicos en los que participé.</p></div>
+  <div class="grid">
+    <div class="card"><h3>Arquitectura de detección y respuesta en AWS</h3><p>Diseño de un modelo de seguridad proactivo con CloudTrail, GuardDuty, EventBridge y funciones Lambda para automatizar la detección y respuesta ante eventos, con notificación directa al SOC.</p></div>
+    <div class="card"><h3>Gestión integral de seguridad de la información</h3><p>Más de 13 años liderando seguridad informática en un organismo del sector público: políticas, gestión de riesgos, planes de contingencia, backups y simulacros de ataques.</p></div>
+    <div class="card"><h3>Seguridad de infraestructura y redes (Fortinet)</h3><p>Diseño y administración de infraestructura de red y seguridad perimetral: firewalls, VPN y segmentación de red.</p></div>
+    <div class="card"><h3>Simulaciones de phishing (Red Team)</h3><p>Diseño y ejecución de campañas de phishing controladas con Gophish para evaluar exposición humana y fortalecer la concientización.</p></div>
+  </div>
+</div></section>
+
+<section class="process"><div class="wrap">
+  <div class="head"><div class="tag">// comunidad</div><h2>Formación y participación activa</h2></div>
+  <div class="badge-grid">
+    <div class="badge"><div class="ico">🎓</div><h4>Red Team Operator</h4><p>Ekoparty Hackademy · 2024</p></div>
+    <div class="badge"><div class="ico">🎤</div><h4>Panel CSIRTs Públicos</h4><p>Tecnap 2025</p></div>
+    <div class="badge"><div class="ico">🤝</div><h4>AWS CISO Circles</h4><p>Intercambio con CISOs de la región</p></div>
+    <div class="badge"><div class="ico">📜</div><h4>Certificaciones</h4><p>CCNA · AWS Architecting/Security · ISO 27001 Auditor Interno</p></div>
+  </div>
+</div></section>
+
+<section id="perfil"><div class="wrap"><div class="about">
+  <div>
+    <div class="tag" style="color:var(--green);font-size:.8rem">// perfil</div>
+    <h2>Experiencia técnica, trato directo.</h2>
+    <p><strong style="color:#fff">Eduardo Zavala</strong> — Profesional de ciberseguridad, redes e infraestructura, con más de 15 años de experiencia técnica.</p>
+    <p>Si necesitás saber dónde estás expuesto, validar tus controles de seguridad, investigar un problema o tomar una decisión de arquitectura, puedo evaluar el escenario directamente con vos y ayudarte a definir e implementar una solución.</p>
+  </div>
+  <div class="facts">
+    <div><span>Experiencia</span><span>15+ años</span></div>
+    <div><span>Áreas</span><span>Cyber · Cloud · Infra - Cumplimiento</span></div>
+    <div><span>Modalidad</span><span>100% remoto · Consultoría personalizada</span></div>
+    <div><span>LinkedIn</span><span><a href="https://www.linkedin.com/in/eduardo-seba-zavala/" target="_blank">Perfil profesional</a></span></div>
+  </div>
+</div></div></section>
+
+<section id="contacto" class="contact"><div class="wrap">
+  <h2>¿Tenés un problema de seguridad?</h2>
+  <p>Contame brevemente qué necesitás evaluar o resolver.</p>
+  <p><a href="mailto:capa8sec@gmail.com">capa8sec@gmail.com</a> <a href="https://www.linkedin.com/in/eduardo-seba-zavala/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  <form action="https://formsubmit.co/capa8sec@gmail.com" method="POST">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+    <input type="hidden" name="_next" value="https://capa8sec.github.io/#contacto">
+    <label for="c-nombre">Nombre</label>
+    <input id="c-nombre" name="nombre" required>
+    <label for="c-email">Email</label>
+    <input id="c-email" type="email" name="email" required>
+    <label for="c-mensaje">¿En qué puedo ayudarte?</label>
+    <textarea id="c-mensaje" name="mensaje" rows="5" required></textarea>
+    <div class="captcha-box">
+      <label for="c-captcha">Verificación anti-spam</label>
+      <div class="captcha-row">
+        <span id="captcha-question" aria-live="polite"></span>
+        <input id="c-captcha" name="captcha" inputmode="numeric" autocomplete="off" required aria-label="Resultado de la verificación">
+      </div>
+      <div class="captcha-help">Resolvé la cuenta para enviar la consulta.</div>
+    </div>
+    <button type="submit">Enviar consulta</button>
+  </form>
+</div></section>
+
 <footer class="foot">© 2026 Eduardo Zavala · Consultoría independiente en ciberseguridad · 100% remoto</footer>
 
-
 <script>
+// Typewriter en el hero (una sola vez)
+(() => {
+  const el = document.getElementById('typed');
+  const full = "Identificar riesgos. Reducir exposición. Mejorar la seguridad.";
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { el.textContent = full; return; }
+  let i = 0;
+  const cursor = document.createElement('span');
+  cursor.className = 'cursor';
+  function tick(){
+    el.textContent = full.slice(0, i);
+    el.appendChild(cursor);
+    i++;
+    if (i <= full.length) setTimeout(tick, 22);
+  }
+  tick();
+})();
+
+// Lluvia de caracteres sutil en el hero
+(() => {
+  const canvas = document.getElementById('rain');
+  const ctx = canvas.getContext('2d');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { canvas.style.display = 'none'; return; }
+  const hero = canvas.parentElement;
+  function resize(){ canvas.width = hero.offsetWidth; canvas.height = hero.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  const chars = "01アイウエオカキクケコ";
+  const fontSize = 14;
+  let columns = Math.floor(canvas.width / fontSize);
+  let drops = Array(columns).fill(1);
+  function draw(){
+    ctx.fillStyle = 'rgba(10,14,10,0.08)';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = '#4ade80';
+    ctx.font = fontSize + 'px monospace';
+    for (let i=0;i<drops.length;i++){
+      const text = chars[Math.floor(Math.random()*chars.length)];
+      ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+      if (drops[i]*fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+  }
+  setInterval(draw, 55);
+})();
+
+// Formulario / captcha
 (() => {
   const form = document.querySelector('.contact form');
   const question = document.getElementById('captcha-question');
   const answer = document.getElementById('c-captcha');
-
   const a = Math.floor(Math.random() * 8) + 2;
   const b = Math.floor(Math.random() * 8) + 2;
   const expected = a + b;
-
   question.textContent = `¿Cuánto es ${a} + ${b}?`;
-
   form.addEventListener('submit', (event) => {
     if (Number(answer.value.trim()) !== expected) {
       event.preventDefault();
       answer.setCustomValidity('La verificación anti-spam no es correcta.');
       answer.reportValidity();
       answer.focus();
-    } else {
-      answer.setCustomValidity('');
-    }
+    } else { answer.setCustomValidity(''); }
   });
-
   answer.addEventListener('input', () => answer.setCustomValidity(''));
 })();
 </script>
-
 </body>
 </html>
